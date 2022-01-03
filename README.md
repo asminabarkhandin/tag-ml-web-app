@@ -1,6 +1,6 @@
 # Tag ML Web App project (Russian Language Sentiment Analysis) #
 
-[Tag ML Web App][https://tag-ml.web.app/] is built with Flask API for sentiment analysis of reviews in Russian language. The **Home** page promts the user to type in his text in Russian and displays probabilities of being classified as negative/neutral/positive review and classifies the text as one of the group.
+[Tag ML Web App](https://tag-ml.web.app/) is built with Flask API for sentiment analysis of reviews in Russian language. The **Home** page promts the user to type in his text in Russian and displays probabilities of being classified as negative/neutral/positive review and classifies the text as one of the group.
 
 ![img1](/images/img1.png)
 
@@ -29,4 +29,3 @@ In the pipeline besides the model we added TfidVectoriser. This is a method for 
 
 Then all texts are passed to our model in form of vectors, which is more understandable for the ML model than words.
 
-The app consists of 3 pages. Home page propmts the user 
