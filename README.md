@@ -1,8 +1,16 @@
 # Tag ML Web App project (Russian Language Sentiment Analysis) #
 
-In this project we used Flask API for building web app and Scikit-Learn for training models. The Home page promts the user to type in his text in Russian and displays probabilities of being classified as negative/neutral/positive review and classifies the text as one of the group.
+[Tag ML Web App][https://tag-ml.web.app/] is built with Flask API for sentiment analysis of reviews in Russian language. The **Home** page promts the user to type in his text in Russian and displays probabilities of being classified as negative/neutral/positive review and classifies the text as one of the group.
 
-![ing1]()
+![img1](/images/img1.png)
+
+**About** section tells the user about the project itself.
+
+![img2](/images/img2.png)
+
+**Dataset** section shows preview of our dataset which we collected from Kinopoisk.
+
+![img3](/images/img3.png)
 
 ### Problem Statement ###
 We decided to take Kinopoisk reviews classification. Kinopoisk is the biggest Russian-speaking web online cinema service.
