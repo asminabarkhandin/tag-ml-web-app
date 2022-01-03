@@ -1,70 +1,24 @@
-# Getting Started with Create React App
+# Tag ML Web App project (Russian Language Sentiment Analysis) #
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In this project we used Flask API for building web app and Scikit-Learn for training models. The Home page promts the user to type in his text in Russian and displays probabilities of being classified as negative/neutral/positive review and classifies the text as one of the group.
 
-## Available Scripts
+![ing1]()
 
-In the project directory, you can run:
+### Problem Statement ###
+We decided to take Kinopoisk reviews classification. Kinopoisk is the biggest Russian-speaking web online cinema service.
+Besides the usual information and ratings of the films, the user also can read valuable long-read reviews.
+Reviews are categorized by 3 groups: positive, negative and neutral. These labels are chosen by the author of the review and by the readers, who can vote whether the review was negative/positive/neutral by their opinion. The problem is that the readers can vote more for the wrong label for some personal purpose, thus spoiling the statistics of the film. We decided to solve this problem by automatically labeling reviews without human factors, making the statistics of the reviews more objective.
 
-### `npm start`
+### Dataset Collection and Preprocessing ###
+We created a parser for collecting reviews from top 250 best films, scrapping the first 10 good, 10 bad and 10 neutral reviews. Eventually, we got 3574 samples from different movies.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Average text length was 234 words. It contained punctuation, digits, capital letters, some accidental single letters and other noise. In preprocessing we faced the challenge with lemmatization for Russian words, since there is no ready package for Russian in `nltk.stem` lemmatizer. We used `pymystem3` library with `Mystem` analyzer by Yandex.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Model Training ###
+We chose 6 models to train: Logistic Regression, Support Vector Machine, K Nearest Neighbours, Naive Bayes, Decision Tree and Random Forest algorithms. We evaluated their accuracy score, precision, recall and F1 score, and chose the best one - SVM model.
 
-### `npm test`
+In the pipeline besides the model we added TfidVectoriser. This is a method for representing text in vector form. The abbreviation TF-IDF itself stands for TF - term frequency, IDF - inverse document frequency, that is, the ratio of the frequency of use of a word in a single text to the frequency of use of a word in all documents.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Then all texts are passed to our model in form of vectors, which is more understandable for the ML model than words.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The app consists of 3 pages. Home page propmts the user 
