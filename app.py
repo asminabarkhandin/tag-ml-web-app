@@ -32,11 +32,11 @@ def preprocess_text(text):
     return text
 
 
-global svmIrisModel
+global svmModel
 
-svmIrisFile = open('SVMModel80.pckl', 'rb')
-svmIrisModel = pickle.load(svmIrisFile)
-svmIrisFile.close()
+svmFile = open('SVMModel80.pckl', 'rb')
+svmModel = pickle.load(svmFile)
+svmFile.close()
 
 app = Flask(__name__)
 CORS(app)
@@ -64,8 +64,8 @@ def get_overall_status(classname):
 def hello_world():
     review = request.get_json()
     text = review["review"]
-    class_prediced = svmIrisModel.predict([text])
-    probas = svmIrisModel.predict_proba([text])[0]
+    class_prediced = svmModel.predict([text])
+    probas = svmModel.predict_proba([text])[0]
     # send review to ml
     # get some metrics
     data = {
